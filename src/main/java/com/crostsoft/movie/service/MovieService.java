@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface MovieService {
 
     MovieDto findById(Long id);
+    MovieDto createMovie(MovieDto movieDto);
 }

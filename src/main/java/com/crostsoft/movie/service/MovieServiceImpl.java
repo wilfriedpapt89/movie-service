@@ -1,6 +1,7 @@
 package com.crostsoft.movie.service;
 
 import com.crostsoft.movie.dto.MovieDto;
+import com.crostsoft.movie.entity.Movie;
 import com.crostsoft.movie.mapper.MovieMapper;
 import com.crostsoft.movie.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,4 +20,12 @@ public class MovieServiceImpl implements MovieService {
     public MovieDto findById(Long id) {
         return movieMapper.toMovieDto(movieRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
+
+    @Override
+    public MovieDto createMovie(MovieDto movieDto) {
+         Movie movie = movieRepository.save(movieMapper.toMovie(movieDto));
+        return movieMapper.toMovieDto(movie);
+    }
+
+
 }
